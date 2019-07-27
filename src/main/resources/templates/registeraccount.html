@@ -24,21 +24,21 @@
           <label th:if="${#fields.hasErrors('customer.id')}" th:errors="*{customer.id}"
                  class="alert alert-danger"></label>
           <input type="text" th:field="*{customer.id}" placeholder="Enter Customer ID"
-                 class="form-control input-lg"/>
+                 class="form-control input-lg" required="required" minlength="2" maxlength="20"/>
         </div>
 
         <div class="form-group">
           <label th:if="${#fields.hasErrors('type')}" th:errors="*{type}"
                  class="alert alert-danger"></label>
           <input type="text" th:field="*{type}" placeholder="Account Type"
-                 class="form-control input-lg"/>
+                 class="form-control input-lg" required="required" minlength="2" maxlength="20"/>
         </div>
 
         <div class="form-group">
           <label th:if="${#fields.hasErrors('type')}" th:errors="*{balance}"
                  class="alert alert-danger"></label>
           <input type="text" th:field="*{balance}" placeholder="Account Initial Balance"
-                 class="form-control input-lg"/>
+                 class="form-control input-lg" required="required" />
         </div>
 
         <div class="row">

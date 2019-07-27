@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <link th:href="@{/css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:fragment="sidebar">
+
+  <div class="sidenav">
+    <a href="about" ></a>
+    <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
+
+      <li class="dropdown active">
+        <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{/accounts}">Accounts
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{/accounts/create}">Create Account</a></li>
+          <li><a th:href="@{/accounts}">Search Account</a></li>
+        </ul>
+      </li>
+    </ul>
+    <a href="#clients">Clients</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+</body>
+</html>

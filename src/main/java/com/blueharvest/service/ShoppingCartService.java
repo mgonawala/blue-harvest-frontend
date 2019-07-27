@@ -1,7 +1,7 @@
-package com.reljicd.service;
+package com.blueharvest.service;
 
-import com.reljicd.exception.NotEnoughProductsInStockException;
-import com.reljicd.model.Product;
+import com.blueharvest.exception.NotEnoughProductsInStockException;
+import com.blueharvest.model.Product;
 
 import java.math.BigDecimal;
 import java.util.Map;

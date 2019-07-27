@@ -1,8 +1,8 @@
-package com.reljicd.controller;
+package com.blueharvest.controller;
 
-import com.reljicd.exception.NotEnoughProductsInStockException;
-import com.reljicd.service.ProductService;
-import com.reljicd.service.ShoppingCartService;
+import com.blueharvest.exception.NotEnoughProductsInStockException;
+import com.blueharvest.service.ProductService;
+import com.blueharvest.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

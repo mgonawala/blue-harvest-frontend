@@ -1,9 +1,9 @@
-package com.reljicd.service.impl;
+package com.blueharvest.service.impl;
 
-import com.reljicd.model.User;
-import com.reljicd.repository.RoleRepository;
-import com.reljicd.repository.UserRepository;
-import com.reljicd.service.UserService;
+import com.blueharvest.model.User;
+import com.blueharvest.repository.RoleRepository;
+import com.blueharvest.repository.UserRepository;
+import com.blueharvest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

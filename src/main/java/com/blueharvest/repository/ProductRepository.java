@@ -1,6 +1,6 @@
-package com.reljicd.repository;
+package com.blueharvest.repository;
 
-import com.reljicd.model.Product;
+import com.blueharvest.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

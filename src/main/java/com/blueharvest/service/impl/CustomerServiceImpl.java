@@ -1,8 +1,7 @@
-package com.reljicd.service.impl;
+package com.blueharvest.service.impl;
 
-import com.reljicd.model.Account;
-import com.reljicd.model.Customer;
-import com.reljicd.service.CustomerService;
+import com.blueharvest.model.Customer;
+import com.blueharvest.service.CustomerService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

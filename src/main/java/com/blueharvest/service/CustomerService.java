@@ -1,7 +1,6 @@
-package com.reljicd.service;
+package com.blueharvest.service;
 
-import com.reljicd.model.Account;
-import com.reljicd.model.Customer;
+import com.blueharvest.model.Customer;
 import java.util.List;
 import java.util.Optional;
 

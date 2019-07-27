@@ -1,6 +1,6 @@
-package com.reljicd.repository;
+package com.blueharvest.repository;
 
-import com.reljicd.model.Role;
+import com.blueharvest.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 

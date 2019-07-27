@@ -1,10 +1,8 @@
-package com.reljicd.service.impl;
+package com.blueharvest.service.impl;
 
-import com.reljicd.model.Customer;
-import com.reljicd.model.Transaction;
-import com.reljicd.service.TransactionsService;
+import com.blueharvest.model.Transaction;
+import com.blueharvest.service.TransactionsService;
 import java.util.List;
-import org.omg.IOP.TransactionService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;

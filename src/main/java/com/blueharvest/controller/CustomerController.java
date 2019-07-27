@@ -1,9 +1,7 @@
-package com.reljicd.controller;
+package com.blueharvest.controller;
 
-import com.reljicd.model.Account;
-import com.reljicd.model.Customer;
-import com.reljicd.service.AccountService;
-import com.reljicd.service.CustomerService;
+import com.blueharvest.model.Customer;
+import com.blueharvest.service.CustomerService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.reljicd.config;
+package com.blueharvest.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

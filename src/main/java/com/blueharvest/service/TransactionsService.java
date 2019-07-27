@@ -1,6 +1,6 @@
-package com.reljicd.service;
+package com.blueharvest.service;
 
-import com.reljicd.model.Transaction;
+import com.blueharvest.model.Transaction;
 import java.util.List;
 
 public interface TransactionsService {

@@ -1,7 +1,7 @@
-package com.reljicd.util;
+package com.blueharvest.util;
 
 
-import com.reljicd.model.Product;
+import com.blueharvest.model.Product;
 import org.springframework.data.domain.Page;
 
 /**

@@ -1,21 +1,16 @@
-package com.reljicd.service.impl;
+package com.blueharvest.service.impl;
 
-import com.reljicd.model.Account;
-import com.reljicd.service.AccountService;
+import com.blueharvest.model.Account;
+import com.blueharvest.service.AccountService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
 public class AccountServiceImpl implements AccountService {

@@ -1,8 +1,8 @@
-package com.reljicd.service.impl;
+package com.blueharvest.service.impl;
 
-import com.reljicd.model.Product;
-import com.reljicd.repository.ProductRepository;
-import com.reljicd.service.ProductService;
+import com.blueharvest.model.Product;
+import com.blueharvest.repository.ProductRepository;
+import com.blueharvest.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

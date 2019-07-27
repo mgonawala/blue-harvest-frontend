@@ -1,6 +1,4 @@
-package com.reljicd.model;
-
-import java.math.BigDecimal;
+package com.blueharvest.model;
 
 public class Account {
 

@@ -1,4 +1,4 @@
-package com.reljicd.model;
+package com.blueharvest.model;
 
 import org.hibernate.validator.constraints.Length;
 

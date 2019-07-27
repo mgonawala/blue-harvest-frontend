@@ -1,10 +1,10 @@
-package com.reljicd.controller;
+package com.blueharvest.controller;
 
-import com.reljicd.model.Account;
-import com.reljicd.model.Product;
-import com.reljicd.service.AccountService;
-import com.reljicd.service.ProductService;
-import com.reljicd.util.Pager;
+import com.blueharvest.model.Account;
+import com.blueharvest.model.Product;
+import com.blueharvest.service.AccountService;
+import com.blueharvest.service.ProductService;
+import com.blueharvest.util.Pager;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
-import sun.management.counter.AbstractCounter;
 
 @Controller
 public class HomeController {

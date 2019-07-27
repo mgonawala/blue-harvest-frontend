@@ -1,17 +1,11 @@
-package com.reljicd.controller;
+package com.blueharvest.controller;
 
-import com.reljicd.model.Account;
-import com.reljicd.model.Customer;
-import com.reljicd.model.Product;
-import com.reljicd.model.User;
-import com.reljicd.service.AccountService;
-import com.reljicd.service.ProductService;
-import com.reljicd.util.Pager;
+import com.blueharvest.model.Account;
+import com.blueharvest.model.Customer;
+import com.blueharvest.service.AccountService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;

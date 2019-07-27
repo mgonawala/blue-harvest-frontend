@@ -1,16 +1,13 @@
-package com.reljicd.controller;
+package com.blueharvest.controller;
 
-import com.reljicd.model.Customer;
-import com.reljicd.model.Transaction;
-import com.reljicd.service.TransactionsService;
+import com.blueharvest.model.Transaction;
+import com.blueharvest.service.TransactionsService;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 

@@ -1,6 +1,6 @@
-package com.reljicd.service;
+package com.blueharvest.service;
 
-import com.reljicd.model.Product;
+import com.blueharvest.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

@@ -1,9 +1,6 @@
-package com.reljicd.model;
+package com.blueharvest.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.Instant;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 public class Transaction {
 

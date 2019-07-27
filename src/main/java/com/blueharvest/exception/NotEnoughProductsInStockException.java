@@ -1,6 +1,6 @@
-package com.reljicd.exception;
+package com.blueharvest.exception;
 
-import com.reljicd.model.Product;
+import com.blueharvest.model.Product;
 
 public class NotEnoughProductsInStockException extends Exception {
 

@@ -1,9 +1,9 @@
-package com.reljicd.service.impl;
+package com.blueharvest.service.impl;
 
-import com.reljicd.exception.NotEnoughProductsInStockException;
-import com.reljicd.model.Product;
-import com.reljicd.repository.ProductRepository;
-import com.reljicd.service.ShoppingCartService;
+import com.blueharvest.exception.NotEnoughProductsInStockException;
+import com.blueharvest.model.Product;
+import com.blueharvest.repository.ProductRepository;
+import com.blueharvest.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;

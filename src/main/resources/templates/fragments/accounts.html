@@ -1,5 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+>
 
 <head>
 
@@ -18,7 +18,7 @@
           </div>
           <div class="col-sm-6">
             <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Account</span></a>
-            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+            <!--<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>-->
           </div>
         </div>
       </div>
@@ -33,9 +33,10 @@
           </th>
           <th>Account ID</th>
           <th>Account Type</th>
+          <th>Created Date</th>
           <th>Account Balance</th>
           <th>Account Statement</th>
-          <th>Actions</th>
+          <!-- <th>Actions</th>-->
         </tr>
         </thead>
         <tbody>
@@ -48,12 +49,13 @@
           </td>
           <td th:text="${account.id}"></td>
           <td th:text="${account.type}"></td>
+          <td th:text="${account.createdDate}"></td>
           <td th:text="${account.balance}"></td>
           <td><a th:href="@{'/transactions/' + ${account.id}}"> Transactions</a> </td>
-          <td>
-            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-          </td>
+          <!-- <td>
+             <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+             &lt;!&ndash;<a href="#deleteAccountModal" class="delete" data-toggle="modal" id="deleteAccountLink" th:onclick="${'deleteAccount('+account.id+');'}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>&ndash;&gt;
+           </td>-->
         </tr>
 
         </tbody>
@@ -76,27 +78,27 @@
   <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
-        <form id="addEmployeeModalForm">
+        <form id="addEmployeeModalForm" method="post" role="form" th:action="@{'/accounts/create'}"
+              th:object="${account}">
           <div class="modal-header">
             <h4 class="modal-title">Add Account</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label>Name</label>
-              <input type="text" class="form-control" required="true"/>
+              <label>Customer Id</label>
+              <input class="form-control" required="true" th:field="*{customer.id}" type="text"/>
             </div>
             <div class="form-group">
-              <label>Email</label>
-              <input type="email" class="form-control" required="true"/>
+              <label>Transaction Type</label>
+              <select class="form-control" id="sel1" th:field="*{type}">
+                <option value="CREDIT">CREDIT</option>
+                <option value="CREDIT">SAVINGS</option>
+              </select>
             </div>
             <div class="form-group">
-              <label>Address</label>
-              <textarea class="form-control" required="true"></textarea>
-            </div>
-            <div class="form-group">
-              <label>Phone</label>
-              <input type="text" class="form-control" required="true"/>
+              <label>Balance Amount</label>
+              <input class="form-control" required="true" th:field="*{balance}" type="text"/>
             </div>
           </div>
           <div class="modal-footer">
@@ -145,10 +147,10 @@
     </div>
   </div>
   <!-- Delete Modal HTML -->
-  <div id="deleteEmployeeModal" class="modal fade">
+  <div class="modal fade" id="deleteAccountModal">
     <div class="modal-dialog">
       <div class="modal-content">
-        <form>
+        <form id="deleteAccountForm" method="post">
           <div class="modal-header">
             <h4 class="modal-title">Delete Employee</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

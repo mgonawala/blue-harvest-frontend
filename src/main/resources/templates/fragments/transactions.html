@@ -1,8 +1,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+>
 
 <head>
+  <script>
 
+  </script>
 </head>
 
 <body>
@@ -17,8 +19,9 @@
             <h2>Manage <b>Transactions</b></h2>
           </div>
           <div class="col-sm-6">
-            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>New Transaction</span></a>
-            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Revert Transaction</span></a>
+            <a class="btn btn-success" data-toggle="modal" href="#addTransactionModal"><i
+                class="material-icons">&#xE147;</i> <span>New Transaction</span></a>
+            <!--<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Revert Transaction</span></a>-->
           </div>
         </div>
       </div>
@@ -33,6 +36,7 @@
           </th>
           <th>Transaction ID</th>
           <th>Transaction Type</th>
+          <th>Transaction Status</th>
           <th>Transaction Balance</th>
           <th>Account ID</th>
           <th>Actions</th>
@@ -48,11 +52,14 @@
           </td>
           <td th:text="${transaction.id}"></td>
           <td th:text="${transaction.type}"></td>
+          <td th:text="${transaction.status}"></td>
           <td th:text="${transaction.amount}"></td>
-          <td th:text="${account_id}"></td>
+          <td id="td_account_id" th:text="${account_id}"></td>
           <td>
             <!--<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>-->
-            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            <a class="delete" data-toggle="modal" href="#deleteTransactionModal" id="deleteLink"
+               th:onclick="${'deleteTransaction(' + transaction.id + ','+account_id+');'}"><i
+                class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
           </td>
         </tr>
 
@@ -73,22 +80,33 @@
     </div>
   </div>
   <!-- Edit Modal HTML -->
-  <div id="addEmployeeModal" class="modal fade">
+  <div class="modal fade" id="addTransactionModal">
     <div class="modal-dialog">
       <div class="modal-content">
-        <form role="form" th:action="@{/transactions}" method="post" th:object="${transaction}">
+        <form method="post" role="form" th:action="@{'/transactions/' + ${account_id}}"
+              th:object="${transaction}">
           <div class="modal-header">
             <h4 class="modal-title">New Transaction</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
           <div class="modal-body">
-            <div class="form-group">
+            <!--<div class="form-group">
               <label>Account ID</label>
-              <input type="text" class="form-control" required="true" th:field="*{id}"/>
-            </div>
+              &lt;!&ndash;<label type="hidden" class="form-control" th:text="${account_id}" th:field="*{id}"></label>&ndash;&gt;
+              <input type="text"  class="form-control"
+                     th:field="*{id}"/>
+            </div>-->
+
             <div class="form-group">
-              <label>Transaction Type</label>
-              <input type="text" class="form-control" required="true" th:field="*{type}"/>
+
+              <div class="form-group">
+                <label>Transaction Type</label>
+                <select class="form-control" id="sel1" th:field="*{type}">
+                  <option value="CREDIT">CREDIT</option>
+                  <option value="CREDIT">DEBIT</option>
+                </select>
+              </div>
+              <!-- <input type="text" class="form-control" required="true" th:field="*{type}"/>-->
             </div>
             <div class="form-group">
               <label>Transaction Amount</label>
@@ -139,10 +157,11 @@
     </div>
   </div>
   <!-- Delete Modal HTML -->
-  <div id="deleteEmployeeModal" class="modal fade">
+  <div class="modal fade" id="deleteTransactionModal">
     <div class="modal-dialog">
       <div class="modal-content">
-        <form>
+        <form id="deleteTransactionForm" method="post"
+              th:action="@{'/transactions/' + ${account_id}}" th:object="${transaction}">
           <div class="modal-header">
             <h4 class="modal-title">Revert Transaction</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -150,6 +169,7 @@
           <div class="modal-body">
             <p>Are you sure you want to delete these Records?</p>
             <p class="text-warning"><small>This action cannot be undone.</small></p>
+            <input th:field="*{id}" type="hidden"/>
           </div>
           <div class="modal-footer">
             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"/>

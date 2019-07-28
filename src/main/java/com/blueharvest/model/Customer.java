@@ -16,6 +16,7 @@ public class Customer {
 
   private Long id;
 
+  private String errors;
 
   public String getFirstName() {
     return firstName;
@@ -55,6 +56,14 @@ public class Customer {
 
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
+  }
+
+  public String getErrors() {
+    return errors;
+  }
+
+  public void setErrors(String errors) {
+    this.errors = errors;
   }
 }
 

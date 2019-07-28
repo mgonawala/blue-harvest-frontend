@@ -9,4 +9,6 @@ public interface TransactionsService {
 
   Transaction newTransaction(Transaction id, Long accountId);
 
+  Transaction deleteTransaction(Long accountId, Long transactionId);
+
 }

@@ -6,6 +6,7 @@ import com.blueharvest.service.AccountService;
 import com.blueharvest.service.ProductService;
 import com.blueharvest.util.Pager;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,8 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.Optional;
 
 @Controller
 public class HomeController {
@@ -46,7 +45,7 @@ public class HomeController {
         //modelAndView.addObject("products", products);
         modelAndView.addObject("pager", pager);
         modelAndView.addObject("accounts", accounts);
-        modelAndView.setViewName("/home");
+        modelAndView.setViewName("/accounts");
         return modelAndView;
     }
 

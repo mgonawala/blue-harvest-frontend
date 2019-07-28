@@ -32,14 +32,34 @@ public class TransactionsController {
     return modelAndView;
   }
 
-  @PostMapping("/transactions")
-  public ModelAndView transactions(@ModelAttribute Transaction transaction) {
+  @PostMapping("/transactions/{id}")
+  public ModelAndView transactions(@ModelAttribute Transaction transaction, @PathVariable Long
+      id) {
 
     ModelAndView modelAndView = new ModelAndView();
     //modelAndView.addObject("products", products);
-    Long accountId = transaction.getId();
-    transaction = transactionsService.newTransaction(transaction, transaction.getId());
-    modelAndView.addObject("success_msg","Transaction was successful.");
+    transaction = transactionsService.newTransaction(transaction, id);
+    if (transaction.getErrors() != null && !transaction.getErrors().isEmpty()) {
+      modelAndView.addObject("error_msg", transaction.getErrors());
+    } else {
+      modelAndView.addObject("success_msg", "Transaction was successful.");
+    }
+    modelAndView.setViewName("redirect:/transactions/" + id);
+    return modelAndView;
+  }
+
+  @PostMapping("/accounts/{accountId}/transactions/{transactionId}")
+  public ModelAndView delete(@PathVariable Long accountId, @PathVariable Long
+      transactionId) {
+
+    ModelAndView modelAndView = new ModelAndView();
+    //modelAndView.addObject("products", products);
+    Transaction transaction = transactionsService.deleteTransaction(accountId, transactionId);
+    if (transaction.getErrors() != null && !transaction.getErrors().isEmpty()) {
+      modelAndView.addObject("error_msg", transaction.getErrors());
+    } else {
+      modelAndView.addObject("success_msg", "Transaction revert was successful.");
+    }
     modelAndView.setViewName("redirect:/transactions/"+accountId);
     return modelAndView;
   }

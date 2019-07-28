@@ -16,6 +16,8 @@ public class Transaction {
 
   private Account account;
 
+  private String errors;
+
   public Long getId() {
     return id;
   }
@@ -62,5 +64,13 @@ public class Transaction {
 
   public void setAccount(Account account) {
     this.account = account;
+  }
+
+  public String getErrors() {
+    return errors;
+  }
+
+  public void setErrors(String errors) {
+    this.errors = errors;
   }
 }

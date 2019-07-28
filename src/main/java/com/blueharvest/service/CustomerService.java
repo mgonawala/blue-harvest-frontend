@@ -11,4 +11,7 @@ public interface CustomerService {
   List<Customer> findAllProductsPageable();
 
   Customer createNewCustomer(Customer customer);
+
+
+  Customer updateCustomer(Customer customer, Long id);
 }

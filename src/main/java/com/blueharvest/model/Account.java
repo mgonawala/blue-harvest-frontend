@@ -1,5 +1,7 @@
 package com.blueharvest.model;
 
+import java.util.Date;
+
 public class Account {
 
   private Long id;
@@ -9,6 +11,10 @@ public class Account {
   private String type;
 
   private Customer customer;
+
+  private String errors;
+
+  private Date createdDate;
 
   public Long getId() {
     return id;
@@ -40,5 +46,21 @@ public class Account {
 
   public void setCustomer(Customer customer) {
     this.customer = customer;
+  }
+
+  public String getErrors() {
+    return errors;
+  }
+
+  public void setErrors(String errors) {
+    this.errors = errors;
+  }
+
+  public Date getCreatedDate() {
+    return createdDate;
+  }
+
+  public void setCreatedDate(Date createdDate) {
+    this.createdDate = createdDate;
   }
 }

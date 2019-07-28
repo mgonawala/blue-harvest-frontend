@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,7 +38,9 @@ public class CustomerController {
     List<Customer> accounts = customerService.findAllProductsPageable();
     ModelAndView modelAndView = new ModelAndView();
     //modelAndView.addObject("products", products);
+    Customer customer = new Customer();
     modelAndView.addObject("customers", accounts);
+    modelAndView.addObject("customer", customer);
     modelAndView.setViewName("/customers");
     return modelAndView;
   }
@@ -55,8 +58,26 @@ public class CustomerController {
   public ModelAndView createAccount(@ModelAttribute Customer input) {
     ModelAndView modelAndView = new ModelAndView();
     Customer account1 = customerService.createNewCustomer(input);
-    modelAndView.addObject("success_msg", "customer created successfully.");
-    modelAndView.setViewName("/registercustomer");
+    if (account1.getErrors() != null && !account1.getErrors().isEmpty()) {
+      modelAndView.addObject("error_msg", account1.getErrors());
+    } else {
+      modelAndView.addObject("success_msg", "Customer created successfully.");
+    }
+    modelAndView.setViewName("redirect:/customers");
     return modelAndView;
   }
+
+  @PostMapping("/customers/{id}")
+  public ModelAndView updateCustomer(@ModelAttribute Customer input, @PathVariable Long id) {
+    ModelAndView modelAndView = new ModelAndView();
+    Customer account1 = customerService.updateCustomer(input, id);
+    if (account1.getErrors() != null && !account1.getErrors().isEmpty()) {
+      modelAndView.addObject("error_msg", account1.getErrors());
+    } else {
+      modelAndView.addObject("success_msg", "Customer details updated successfully.");
+    }
+    modelAndView.setViewName("redirect:/customers/");
+    return modelAndView;
+  }
+
 }

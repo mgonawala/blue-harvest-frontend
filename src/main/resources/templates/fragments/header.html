@@ -35,6 +35,26 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
             <script type="text/javascript">
+              function deleteAccount(i) {
+                $("#deleteAccountForm").attr('action',
+                    "/accounts/" + i);
+              }
+
+              function deleteTransaction(i, j) {
+                $("#deleteTransactionForm").attr('action',
+                    "/accounts/" + j + "/transactions/" + i);
+              }
+
+              function editCustomer(i) {
+                $("#editCustomerForm").attr('action',
+                    "/customers/" + i);
+                $("#customer_firstName").val(document.getElementById('firstName_' + i).innerHTML);
+                $("#customer_lastName").val(document.getElementById('lastName_' + i).innerHTML);
+                $("#customer_phone").val(document.getElementById('phoneNumber' + i).innerHTML);
+                $("#editCustomerForm").attr('action',
+                    "/customers/" + i);
+              }
+
                 $(document).ready(function(){
                     // Activate tooltip
                     /*$('[data-toggle="tooltip"]').tooltip();*/
@@ -58,6 +78,17 @@
                             $("#selectAll").prop("checked", false);
                         }
                     });
+
+                  var addTransactionModal = $("#addTransactionModal");
+                  if (addTransactionModal != NaN) {
+                    addTransactionModal.click(function () {
+                      var myBookId = "1";
+                      $(".modal-body #id").val(myBookId);
+                    });
+                  }
+
+
+
                 });
             </script>
         </div>
@@ -75,27 +106,33 @@
             <div id="navbar" class="collapse navbar-collapse navbar-right">
 
                 <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
-                    <li class="dropdown active">
-                        <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{/accounts}">Accounts
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a th:href="@{/accounts/create}">Create Account</a></li>
-                            <li><a th:href="@{/accounts}">Search Account</a></li>
-                        </ul>
-                    </li>
+                  <li class="active"><a th:href="@{/accounts}">Accounts</a></li>
                 </ul>
-
                 <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
-
-                    <li class="dropdown active">
-                        <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{/customers}">Customers
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a th:href="@{/customers/create}">Register new customer</a></li>
-                            <li><a th:href="@{/customers}">Search Customer</a></li>
-                        </ul>
-                    </li>
+                  <li class="active"><a th:href="@{/customers}">Customers</a></li>
                 </ul>
+              <!--                <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">-->
+              <!--                    <li class="dropdown active">-->
+              <!--                        <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{/accounts}">Accounts-->
+              <!--                            <span class="caret"></span></a>-->
+              <!--                        <ul class="dropdown-menu">-->
+              <!--                            <li><a th:href="@{/accounts/create}">Create Account</a></li>-->
+              <!--                            <li><a th:href="@{/accounts}">Search Account</a></li>-->
+              <!--                        </ul>-->
+              <!--                    </li>-->
+              <!--                </ul>-->
+
+              <!--                <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">-->
+
+              <!--                    <li class="dropdown active">-->
+              <!--                        <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{/customers}">Customers-->
+              <!--                            <span class="caret"></span></a>-->
+              <!--                        <ul class="dropdown-menu">-->
+              <!--                            <li><a th:href="@{/customers/create}">Register new customer</a></li>-->
+              <!--                            <li><a th:href="@{/customers}">Search Customer</a></li>-->
+              <!--                        </ul>-->
+              <!--                    </li>-->
+              <!--                </ul>-->
                 <!-- show registration only if user is not yet authenticated -->
                 <ul class="nav navbar-nav" sec:authorize="!isAuthenticated()">
                     <li class="active"><a th:href="@{/registration}">Registration</a></li>

@@ -12,6 +12,7 @@
 <div class="container">
 
   <div class="alert alert-info" th:if="${success_msg}" th:utext="${success_msg}"></div>
+  <div class="alert alert-info" th:if="${error_msg}" th:utext="${error_msg}"></div>
   <div th:replace="/fragments/transactions :: transactions"/>
 
 </div>

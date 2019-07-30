@@ -22,7 +22,6 @@ public class AccountServiceImpl implements AccountService {
   @Value("${system.api.baserUrl}")
   private String apiBaseUrl;
 
-  private String apiPath = "accounts";
 
   private RestTemplate restTemplate = new RestTemplate();
 
@@ -64,7 +63,6 @@ public class AccountServiceImpl implements AccountService {
             .readValue(ex.getResponseBodyAsString(), ErrorModle.class);
         transaction1.setErrors(errorModle.getErrors().get(0));
       } catch (IOException e) {
-        e.printStackTrace();
       }
       return transaction1;
     }
@@ -87,7 +85,6 @@ public class AccountServiceImpl implements AccountService {
         }
 
       } catch (IOException e) {
-        e.printStackTrace();
       }
       return transaction1;
     }

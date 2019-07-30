@@ -8,7 +8,7 @@ public interface CustomerService {
 
   Optional<Customer> findById(Long id);
 
-  List<Customer> findAllProductsPageable();
+  List<Customer> findAllCustomers();
 
   Customer createNewCustomer(Customer customer);
 

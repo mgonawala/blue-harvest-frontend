@@ -18,19 +18,12 @@
           </div>
           <div class="col-sm-6">
             <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Account</span></a>
-            <!--<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>-->
           </div>
         </div>
       </div>
       <table class="table table-striped table-hover" style="scroll-behavior: auto; height: 60%;">
         <thead>
         <tr>
-          <th>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll"/>
-								<label for="selectAll"></label>
-							</span>
-          </th>
           <th>Account ID</th>
           <th>Account Type</th>
           <th>Created Date</th>
@@ -41,12 +34,6 @@
         </thead>
         <tbody>
         <tr th:each="account : ${accounts}">
-          <td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1"/>
-								<label for="checkbox1"></label>
-							</span>
-          </td>
           <td th:text="${account.id}"></td>
           <td th:text="${account.type}"></td>
           <td th:text="${account.createdDate}"></td>
@@ -92,8 +79,8 @@
             <div class="form-group">
               <label>Transaction Type</label>
               <select class="form-control" id="sel1" th:field="*{type}">
-                <option value="CREDIT">CREDIT</option>
-                <option value="CREDIT">SAVINGS</option>
+                <option value="CURRENT">CURRENT</option>
+                <option value="SAVINGS">SAVINGS</option>
               </select>
             </div>
             <div class="form-group">

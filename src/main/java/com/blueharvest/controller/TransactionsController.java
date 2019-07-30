@@ -24,7 +24,6 @@ public class TransactionsController {
     );
     ModelAndView modelAndView = new ModelAndView();
     Transaction transaction = new Transaction();
-    //modelAndView.addObject("products", products);
     modelAndView.addObject("account_id",id);
     modelAndView.addObject("transaction",transaction);
     modelAndView.addObject("transactions", transactions);
@@ -36,31 +35,26 @@ public class TransactionsController {
   public ModelAndView transactions(@ModelAttribute Transaction transaction, @PathVariable Long
       id) {
 
-    ModelAndView modelAndView = new ModelAndView();
-    //modelAndView.addObject("products", products);
     transaction = transactionsService.newTransaction(transaction, id);
+    ModelAndView view = this.transactions(id);
     if (transaction.getErrors() != null && !transaction.getErrors().isEmpty()) {
-      modelAndView.addObject("error_msg", transaction.getErrors());
+      view.addObject("error_msg", transaction.getErrors());
     } else {
-      modelAndView.addObject("success_msg", "Transaction was successful.");
+      view.addObject("success_msg", "Transaction was successful.");
     }
-    modelAndView.setViewName("redirect:/transactions/" + id);
-    return modelAndView;
+    return view;
   }
 
   @PostMapping("/accounts/{accountId}/transactions/{transactionId}")
   public ModelAndView delete(@PathVariable Long accountId, @PathVariable Long
       transactionId) {
-
-    ModelAndView modelAndView = new ModelAndView();
-    //modelAndView.addObject("products", products);
     Transaction transaction = transactionsService.deleteTransaction(accountId, transactionId);
+    ModelAndView view = this.transactions(accountId);
     if (transaction.getErrors() != null && !transaction.getErrors().isEmpty()) {
-      modelAndView.addObject("error_msg", transaction.getErrors());
+      view.addObject("error_msg", transaction.getErrors());
     } else {
-      modelAndView.addObject("success_msg", "Transaction revert was successful.");
+      view.addObject("success_msg", "Transaction revert was successful.");
     }
-    modelAndView.setViewName("redirect:/transactions/"+accountId);
-    return modelAndView;
+    return view;
   }
 }

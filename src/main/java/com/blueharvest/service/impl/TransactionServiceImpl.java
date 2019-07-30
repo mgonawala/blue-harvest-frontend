@@ -20,11 +20,6 @@ public class TransactionServiceImpl implements TransactionsService{
   @Value("${system.api.baserUrl}")
   private String apiBaseUrl;
 
-  @Value(("${transactions.contextPath}"))
-  private String apiPath ;
-
-  @Value("${get.customers.byId.uri}")
-  private String getCustomers;
 
   private RestTemplate restTemplate = new RestTemplate();
 
@@ -44,7 +39,7 @@ public class TransactionServiceImpl implements TransactionsService{
     transaction.setId(null);
     try {
       ResponseEntity<Transaction> savedCustomer = restTemplate
-          .postForEntity(apiBaseUrl + apiPath,
+          .postForEntity(apiBaseUrl + "/accounts/" + accountId + "/transactions",
               transaction, Transaction.class, accountId);
       return savedCustomer.getBody();
     } catch (HttpClientErrorException ex) {

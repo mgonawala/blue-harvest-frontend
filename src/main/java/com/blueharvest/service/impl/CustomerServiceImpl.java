@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,11 +23,6 @@ public class CustomerServiceImpl implements CustomerService {
   @Value("${system.api.baserUrl}")
   private String apiBaseUrl;
 
-  @Value(("${customers.contextPath}"))
-  private String apiPath ;
-
-  @Value("${get.customers.byId.uri}")
-  private String getCustomers;
 
   private RestTemplate restTemplate = new RestTemplate();
 
@@ -37,14 +31,15 @@ public class CustomerServiceImpl implements CustomerService {
 
     Map<String, String> vars = new HashMap<String, String>();
     vars.put("id", id.toString());
-    Customer result = restTemplate.getForObject(apiBaseUrl+apiPath+getCustomers, Customer.class, vars);
+    Customer result = restTemplate
+        .getForObject(apiBaseUrl + "/customers/" + id, Customer.class, vars);
     return Optional.of(result);
   }
 
   @Override
-  public List<Customer> findAllProductsPageable() {
+  public List<Customer> findAllCustomers() {
     ResponseEntity<List<Customer>> rateResponse =
-        restTemplate.exchange(apiBaseUrl + apiPath,
+        restTemplate.exchange(apiBaseUrl + "/customers",
             HttpMethod.GET, null, new ParameterizedTypeReference<List<Customer>>() {
             });
     List<Customer> accounts = rateResponse.getBody();
@@ -55,7 +50,7 @@ public class CustomerServiceImpl implements CustomerService {
   public Customer createNewCustomer(Customer customer) {
     try {
       ResponseEntity<Customer> savedCustomer = restTemplate
-          .postForEntity(apiBaseUrl + apiPath,
+          .postForEntity(apiBaseUrl + "/customers",
               customer, Customer.class);
 
       return savedCustomer.getBody();
@@ -77,13 +72,7 @@ public class CustomerServiceImpl implements CustomerService {
   @Override
   public Customer updateCustomer(Customer customer, Long id) {
     try {
-      HttpEntity<Customer> customerHttpEntity = new HttpEntity<>(customer);
-   /* ResponseEntity<Customer> rateResponse =
-        restTemplate.exchange(apiBaseUrl + apiPath +"/"+id,
-            HttpMethod.PUT, customerHttpEntity, new ParameterizedTypeReference<Customer>() {
-            });*/
-      restTemplate.put(apiBaseUrl + apiPath + "/" + id, customer);
-
+      restTemplate.put(apiBaseUrl + "/customers/" + id, customer);
       return customer;
     } catch (
         HttpClientErrorException ex) {

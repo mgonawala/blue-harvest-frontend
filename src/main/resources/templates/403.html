@@ -15,6 +15,7 @@
         <div th:inline="text">Hello '[[${#httpServletRequest.remoteUser}]]',
             you do not have permission to access this page.
         </div>
+        <a href="index.html" th:href="@{/accounts}">Back to Home Page</a>
     </div>
 </div>
 

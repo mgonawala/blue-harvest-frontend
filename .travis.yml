@@ -6,10 +6,6 @@ services:
   - hsqldb
   - docker
 
-
-script:
-  - ./mvnw clean install -B
-
 after_success:
   - docker login -u "mohinigonawala90" -p "mo1hi2ni3"
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH; fi`

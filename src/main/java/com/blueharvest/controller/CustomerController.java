@@ -48,8 +48,9 @@ public class CustomerController {
 
   @PostMapping("/customers/create")
   public ModelAndView createAccount(@ModelAttribute Customer input) {
-    ModelAndView modelAndView = this.home();
+
     Customer account1 = customerService.createNewCustomer(input);
+    ModelAndView modelAndView = this.home();
     if (account1.getErrors() != null && !account1.getErrors().isEmpty()) {
       modelAndView.addObject("error_msg", account1.getErrors());
     } else {
@@ -60,8 +61,8 @@ public class CustomerController {
 
   @PostMapping("/customers/{id}")
   public ModelAndView updateCustomer(@ModelAttribute Customer input, @PathVariable Long id) {
-    ModelAndView modelAndView = this.home();
     Customer account1 = customerService.updateCustomer(input, id);
+    ModelAndView modelAndView = this.home();
     if (account1.getErrors() != null && !account1.getErrors().isEmpty()) {
       modelAndView.addObject("error_msg", account1.getErrors());
     } else {

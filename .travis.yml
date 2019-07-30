@@ -16,7 +16,7 @@ after_success:
 
 deploy:
   provider: heroku
-  api_key: "6d1f4c8e-79f8-487f-9a19-ec98f4caea82"
-  app: bank-api-frontend
+  api_key: "0153e1b5-27ea-4ae3-9185-a9c468a3a8d0"
+  app: blue-harvest-frontend
 
 cache: bundler
